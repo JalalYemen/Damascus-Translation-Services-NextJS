@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode, FC } from 'react';
 import { en } from '../data/en';
 import { ar } from '../data/ar';
 
@@ -7,13 +7,13 @@ type Language = 'en' | 'ar';
 interface LanguageContextType {
   language: Language;
   toggleLanguage: () => void;
-  t: typeof en;
+  t: typeof en | typeof ar;
   dir: 'ltr' | 'rtl';
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const LanguageProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [language, setLanguage] = useState<Language>('en');
 
   const toggleLanguage = () => {

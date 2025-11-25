@@ -1,5 +1,12 @@
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
+
+declare global {
+  interface Window {
+    emailjs: any;
+  }
+}
 
 export const Contact: React.FC = () => {
   const { t } = useLanguage();
@@ -10,6 +17,14 @@ export const Contact: React.FC = () => {
     user_message: ''
   });
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+    // Initialize EmailJS
+    if (window.emailjs) {
+        window.emailjs.init("YWr00jt06-K5B1xtt");
+    }
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -21,21 +36,39 @@ export const Contact: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('sending');
+    setErrorMessage('');
+
+    if (!window.emailjs) {
+        console.error("EmailJS SDK not loaded");
+        setStatus('error');
+        setErrorMessage("Email service unavailable");
+        return;
+    }
 
     try {
-      // Mock sending delay
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      console.log("Contact form submitted:", formData);
+      const templateParams = {
+        user_name: formData.user_name,
+        user_email: formData.user_email,
+        user_service: formData.user_service,
+        user_message: formData.user_message,
+        isQuoteRequest: "No"
+      };
+
+      await window.emailjs.send(
+        "service_oo9vipi", // Service ID
+        "template_80ep6mu", // General Contact Template ID
+        templateParams
+      );
       
       setStatus('success');
       setFormData({ user_name: '', user_email: '', user_service: '', user_message: '' });
       
-      // Reset status after 3 seconds
-      setTimeout(() => setStatus('idle'), 3000);
-    } catch (error) {
+      // Reset status after 5 seconds
+      setTimeout(() => setStatus('idle'), 5000);
+    } catch (error: any) {
       console.error("Contact form failed:", error);
       setStatus('error');
+      setErrorMessage(error.text || error.message || "Unknown error");
     }
   };
 
@@ -103,7 +136,7 @@ export const Contact: React.FC = () => {
                 </div>
                 
                 {status === 'success' && <div className="alert alert-success text-center">{t.contact.success}</div>}
-                {status === 'error' && <div className="alert alert-danger text-center">{t.contact.error}</div>}
+                {status === 'error' && <div className="alert alert-danger text-center">{t.contact.error} {errorMessage && `(${errorMessage})`}</div>}
                 
                 <button
                   type="submit"

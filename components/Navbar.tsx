@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useRouter } from '../contexts/RouterContext';
+import { User } from '../App';
 
 interface NavbarProps {
   onOpenAuth: () => void;
-  user: string | null;
+  user: User | null;
   onLogout: () => void;
 }
 
@@ -12,6 +13,24 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAuth, user, onLogout }) =>
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { t, toggleLanguage } = useLanguage();
   const { navigate, currentRoute } = useRouter();
+  const dropdownRef = useRef<HTMLLIElement>(null);
+
+  // Logic from auth.js: Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    if (isDropdownOpen) {
+      window.addEventListener('click', handleClickOutside);
+    }
+    
+    return () => {
+      window.removeEventListener('click', handleClickOutside);
+    };
+  }, [isDropdownOpen]);
 
   const handleNavClick = (e: React.MouseEvent, target: string) => {
     e.preventDefault();
@@ -34,6 +53,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAuth, user, onLogout }) =>
     } else if (target === 'quote') {
         navigate('quote');
     }
+  };
+
+  // Logic from auth.js: Determine Avatar Initial
+  const getAvatarInitial = () => {
+    if (!user) return '';
+    const nameSource = user.displayName || user.email || '?';
+    return nameSource.charAt(0).toUpperCase();
   };
 
   return (
@@ -83,27 +109,34 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAuth, user, onLogout }) =>
               <li
                 className="nav-item"
                 id="user-nav"
-                style={{ position: 'relative', cursor: 'pointer' }}
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                ref={dropdownRef}
+                style={{ position: 'relative', cursor: 'pointer', display: 'block' }}
+                onClick={(e) => {
+                    // Logic from auth.js: e.stopPropagation();
+                    // React's onClick doesn't strictly need this for the window listener to work 
+                    // if we attach the listener in useEffect, but good for safety.
+                    setIsDropdownOpen(!isDropdownOpen);
+                }}
               >
                 <div
                   id="user-avatar"
                   className="user-avatar-circle"
                 >
-                  {user.charAt(0).toUpperCase()}
+                  {getAvatarInitial()}
                 </div>
 
                 <div 
                   id="user-dropdown-menu" 
                   className={`user-dropdown ${isDropdownOpen ? 'show-dropdown' : ''}`}
                 >
-                  <div id="dropdown-user-email" className="dropdown-email">{user}</div>
+                  <div id="dropdown-user-email" className="dropdown-email">{user.email}</div>
                   <button 
                     id="logout-button" 
                     className="btn btn-outline-danger w-100"
                     onClick={(e) => {
                         e.stopPropagation();
                         onLogout();
+                        setIsDropdownOpen(false);
                     }}
                   >
                     {t.nav.logout}
@@ -111,7 +144,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAuth, user, onLogout }) =>
                 </div>
               </li>
             ) : (
-              <li className="nav-item" id="auth-toggle-li">
+              <li className="nav-item" id="auth-toggle-li" style={{ display: 'block' }}>
                 <button 
                   id="auth-toggle" 
                   className="btn btn-outline-primary"

@@ -1,5 +1,4 @@
 
-
 export const en = {
   nav: {
     home: "Home",
@@ -36,13 +35,13 @@ export const en = {
         title: "Expert Interpretation Services",
         icon: "fas fa-headset",
         desc: "- Simultaneous\n- Consecutive\n- Remote Interpretation",
-        link: "#"
+        link: "localizations"
       },
       {
         title: "Creative Language Solutions",
         icon: "fas fa-photo-video",
         desc: "- Content Development\n- Media Solutions\n- Quality Enhancement",
-        link: "#"
+        link: "solutions"
       }
     ]
   },
@@ -143,27 +142,27 @@ export const en = {
       { name: "Jane Smith", role: "Head of Operations", img: "https://randomuser.me/api/portraits/women/44.jpg" },
       { name: "Peter Jones", role: "Project Manager", img: "https://randomuser.me/api/portraits/men/34.jpg" }
     ],
-    ctaTitle: "Ready to Work With Us?",
+    ctaTitle: "Ready to work with us?",
     ctaText: "Let's discuss your translation needs. Get a free, no-obligation quote from our team today.",
     ctaButton: "Get a Quote"
   },
   translationsPage: {
-    title: "Professional Document Translation",
-    subtitle: "Certified Document Translation Services - Precision Across Industries.",
+    title: "Professional Translation Services",
+    subtitle: "Accurate, certified, and culturally adapted translations for a global audience. We handle every detail to ensure your message lands perfectly anywhere in the world.",
     categories: [
-      { title: "Legal Translation", items: "Contracts & Agreements | Litigation Documents | Trademarks/Copyrights | Licenses | Arbitration Papers | Terms & Conditions" },
-      { title: "Technical Translation", items: "Engineering Manuals | Scientific Papers | Technical Data Sheets | User Guides | Renewable Energy Docs | Operating Procedures" },
-      { title: "Medical Translation", items: "Patient Records | Medical Journals | Drug Labeling | Case Reports | Medical Device Manuals | Research Findings" },
-      { title: "Financial Translation", items: "Bank Documents | Financial Reports | Balance Sheets | AML/CFT Compliance | Accounting Records | Correspondence" },
-      { title: "Academic Translation", items: "Research Papers | Theses/Dissertations | Textbooks | Certificates | Education Projects | Academic Articles" },
-      { title: "Media & Marketing Translation", items: "Press Releases | Ad Campaigns | Social Media Content | Brochures | Websites | Newsletters" }
+      { title: "Legal Translation", items: "Contracts & Agreements | Court Documents | Copyright & Trademark | Licenses | Arbitration Papers | Terms & Conditions" },
+      { title: "Technical Translation", items: "Operating Manuals | Scientific Papers | Technical Bulletins | User Guides | Renewable Energy | Standard Operating Procedures" },
+      { title: "Medical Translation", items: "Patient Records | Medical Journals | Pharmaceutical Labels | Case Reports | Medical Device Manuals | Research Findings" },
+      { title: "Financial Translation", items: "Bank Statements | Financial Reports | Balance Sheets | Compliance Reports | Accounting Records | Corporate Correspondence" },
+      { title: "Academic Translation", items: "Research Papers | Theses & Dissertations | Textbooks | Transcripts & Diplomas | Educational Projects | Journal Articles" },
+      { title: "Marketing & Media", items: "Press Releases | Ad Campaigns | Social Media Content | Brochures | Websites | Newsletters" }
     ],
     commitment: {
       title: "Our Commitment to Excellence",
       items: [
         { title: "Quality Assurance", desc: "Every translation undergoes a multi-step review process to ensure accuracy and consistency.", icon: "fas fa-check-double" },
-        { title: "Expert Linguists", desc: "Our global network consists of native-speaking, subject-matter experts in over 100 languages.", icon: "fas fa-users-gear" },
-        { title: "Fast Turnaround", desc: "We leverage cutting-edge technology to deliver high-quality translations on your schedule.", icon: "fas fa-bolt" },
+        { title: "Expert Linguists", desc: "Our global network consists of native-speaking experts specializing in their respective fields in 100+ languages.", icon: "fas fa-users-gear" },
+        { title: "Fast Turnaround", desc: "We leverage cutting-edge technology to deliver high-quality translations on time, every time.", icon: "fas fa-bolt" },
         { title: "Confidentiality", desc: "Your documents are handled with the utmost security, protected by strict NDAs and secure servers.", icon: "fas fa-shield-halved" }
       ]
     },
@@ -171,12 +170,67 @@ export const en = {
     ctaText: "Let's discuss your translation needs. Get a free, no-obligation quote from our team today.",
     ctaButton: "Get a Quote"
   },
+  solutionsPage: {
+    title: "Creative Language Solutions",
+    subtitle: "Beyond Translation - Content Innovation & Media Adaptation.",
+    layout: "cards",
+    heroImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=600&q=80",
+    cards: [
+      {
+        title: "Content Development",
+        items: "Multilingual Copywriting | Transcreation | Brand Localization\nMarketing Content | Technical Writing | Press Kits"
+      },
+      {
+        title: "Media Solutions",
+        items: "Video Subtitling (Films/Documentaries/E-learning)\nTranscription (Interviews/Meetings) | Voice-over Scripts"
+      },
+      {
+        title: "Quality Enhancement",
+        items: "Professional Proofreading | Terminology Management\nFormatting & Desktop Publishing | Consistency Checks"
+      }
+    ],
+    ctaTitle: "Bring Your Creative Vision to Life?",
+    ctaText: "Let's build something great together. Get a free, no-obligation quote from our creative team.",
+    ctaButton: "Get a Quote"
+  },
+  localizationsPage: {
+    title: "Expert Interpretation Services",
+    subtitle: "Real-Time Interpretation Solutions - Bridging Language Barriers.",
+    layout: "cards",
+    heroImage: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80",
+    items: [
+      { 
+        title: "On-Site Interpretation", 
+        desc: "Simultaneous (Conference Booths) | Consecutive (Meetings/Workshops)\nField Visits | Court Proceedings | Medical Consultations" 
+      },
+      { 
+        title: "Remote Interpretation", 
+        desc: "Video Conference Support (Zoom/Teams)\nPhone Interpretation | Webinar Coverage\n24/7 Emergency Interpretation" 
+      },
+      { 
+        title: "Specialized Sectors", 
+        desc: "Government Meetings | NGO Field Missions | Business Negotiations\nAcademic Conferences | Healthcare Encounters" 
+      }
+    ],
+    commitment: {
+      title: "Our Commitment to Excellence",
+      items: [
+          { title: "Quality Assurance", desc: "Every project undergoes a multi-step review process for accuracy and consistency.", icon: "fas fa-check-double" },
+          { title: "Expert Teams", desc: "Our network includes localization engineers and subject-matter experts.", icon: "fas fa-users-gear" },
+          { title: "Agile Workflow", desc: "We integrate with your development cycle for continuous localization and fast delivery.", icon: "fas fa-bolt" },
+          { title: "Confidentiality", desc: "Your source code and documents are handled with the utmost security and strict NDAs.", icon: "fas fa-shield-halved" }
+      ]
+    },
+    ctaTitle: "Ready for a Global Audience?",
+    ctaText: "Let's discuss your localization needs. Get a free, no-obligation quote from our team today.",
+    ctaButton: "Get a Quote"
+  },
   quote: {
     title: "Quote Summary",
     steps: {
         step1: "1. Select Service",
-        step2: "2. Choose Options",
-        step3: "3. Complete Payment"
+        step2: "2. Select Options",
+        step3: "3. Checkout"
     },
     tabs: {
       certified: "Certified Translation",
@@ -185,40 +239,40 @@ export const en = {
     form: {
       from: "Translate From",
       to: "Translate To",
-      pages: "Number of pages to be translated",
-      pagesHint: "1 page = 250 words max",
-      words: "Number of words to be translated",
-      upload: "Upload File(s) (Max 5MB per file, PDF, DOCX, TXT, JPG, PNG, ZIP, MP4, MOV, AVI, FLV, WEBM)",
-      urgency: "Do you require your translation urgently?",
-      normal: "Normal",
-      priorityCertified: "Urgent (20 hours) +$7.94",
+      pages: "Number of pages to translate",
+      pagesHint: "1 page = max. 250 words",
+      words: "Number of words to translate",
+      upload: "Upload files (max 5MB per file, PDF, DOCX, TXT, JPG, PNG, ZIP, MP4, MOV, AVI, FLV, WEBM)",
+      urgency: "Do you need it urgently?",
+      normal: "No",
+      priorityCertified: "Urgent (24 hours) +$7.94",
       priorityProfessional: "Urgent (24 hours) +$4.75",
-      continue: "Continue to Options",
-      back: "Go Back"
+      continue: "Continue to payment",
+      back: "Back to Home"
     },
     summary: {
       service: "Service",
-      type: "Pricing",
-      price: "Pricing",
-      delivery: "Estimated Delivery",
+      type: "Type",
+      price: "Price",
+      delivery: "Expected Delivery",
       total: "Total",
       files: "Selected Files"
     },
     modal: {
-      title: "Complete Your Request",
+      title: "Finalize Request",
       send: "Send Request",
-      sendingFiles: "Uploading Files...",
-      sendingEmail: "Sending Email...",
-      name: "Your Name",
-      email: "Your Email",
+      sendingFiles: "Uploading files...",
+      sendingEmail: "Sending email...",
+      name: "Name",
+      email: "Email",
       message: "Additional Message (Optional)",
-      service: "Service Selected"
+      service: "Selected Service"
     },
     errors: {
-      noFiles: "Please select files for upload.",
-      langMismatch: "Source and target languages must differ.",
+      noFiles: "Please select files to upload.",
+      langMismatch: "Source and target languages must be different.",
       invalidCount: "Please enter a valid count.",
-      fileSize: "File exceeds 50MB limit.",
+      fileSize: "File size exceeds 50MB limit.",
       uploadFailed: "Upload failed."
     },
     email: {
@@ -232,5 +286,17 @@ export const en = {
       normal: "Normal",
       fee: "Urgency Fee"
     }
+  },
+  ui: {
+    fileSelected: "{count} file(s) selected.",
+    fileSizeLimit: "Error: exceeds {size}MB limit.",
+    noFiles: "No files selected.",
+    uploading: "Uploading: {fileName} ({progress}%)...",
+    uploaded: "Uploaded: {fileName}",
+    uploadFailed: "Failed to upload {fileName}: {error}",
+    generalUploadError: "File upload failed. Please try again.",
+    noFilesYet: "No files selected yet.",
+    selectedFiles: "Selected Files:",
+    serviceIconUrl: "https://res.cloudinary.com/drxvjsnm2/image/upload/v1700000000/icons/generic_service_icon.png"
   }
 };

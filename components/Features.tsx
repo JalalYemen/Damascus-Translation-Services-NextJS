@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useRouter } from '../contexts/RouterContext';
@@ -29,8 +30,11 @@ export const Features: React.FC = () => {
                     e.preventDefault();
                     if (item.link === 'translations') {
                       navigate('translations');
+                    } else if (item.link === 'solutions') {
+                      navigate('solutions');
+                    } else if (item.link === 'localizations') {
+                      navigate('localizations');
                     } else if (item.link !== '#') {
-                        // Future links can be handled here
                         console.log("Navigating to:", item.link);
                     }
                   }}
